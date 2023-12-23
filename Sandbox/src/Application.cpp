@@ -1,5 +1,5 @@
 
-namespace Engine {
+namespace Amber {
 
 	__declspec(dllimport) void Print();
 
@@ -8,6 +8,6 @@ namespace Engine {
 void main() {
 
 	
-	Engine::Print();
+	Amber::Print();
 
 }
