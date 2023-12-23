@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\VisualStudioProjects\GameEngine\Engine\bin\Debug-x64\Engine\Engine.dll</FullPath>
+      <FullPath>C:\VisualStudioProjects\AmberEngine\Amber\bin\Debug-x64\Amber\Amber.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
