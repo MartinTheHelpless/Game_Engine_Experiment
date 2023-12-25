@@ -1,19 +1,21 @@
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
 
-namespace Amber{
+namespace Amber
+{
 	class AMBER_API Application
 	{
 
 	public:
-		Application(); 
+		Application();
 		virtual ~Application();
 
 		void Run();
 	};
 
 	// To be defined in client
-	Application* CreateApplication();
+	Application *CreateApplication();
 
 }

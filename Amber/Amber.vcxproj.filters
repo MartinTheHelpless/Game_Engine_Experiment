@@ -1,42 +1,46 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Amber">
+      <UniqueIdentifier>{8CACD40C-F8C0-FCBD-C142-A01D2D16F9EE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Amber\Events">
+      <UniqueIdentifier>{F042D110-DCA5-60B5-852B-996B716D2C38}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Amber\Core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Amber.h" />
     <ClInclude Include="src\Amber\Application.h">
-      <Filter>Header Files</Filter>
+      <Filter>Amber</Filter>
     </ClInclude>
-    <ClInclude Include="src\Amber.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Amber\Core.h">
+      <Filter>Amber</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\EntryPoint.h">
-      <Filter>Header Files</Filter>
+      <Filter>Amber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Events\ApplicationEvent.h">
+      <Filter>Amber\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Events\Event.h">
+      <Filter>Amber\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Events\KeyEvent.h">
+      <Filter>Amber\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Events\MouseEvent.h">
+      <Filter>Amber\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Log.h">
-      <Filter>Header Files</Filter>
+      <Filter>Amber</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Amber</Filter>
     </ClCompile>
     <ClCompile Include="src\Amber\Log.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Amber</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
