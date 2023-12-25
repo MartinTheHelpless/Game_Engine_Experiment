@@ -1,0 +1,3 @@
+[submodule "Amber/vendor/sdplog"]
+	path = Amber/vendor/sdplog
+	url = https://github.com/gabime/spdlog
