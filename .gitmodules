@@ -1,6 +1,3 @@
 [submodule "Amber/vendor/spdlog"]
 	path = Amber/vendor/spdlog
-	url = https://github.com/gabime/spdlog  
-[submodule "Amber/vendor/GLFW"]
-	path = Amber/vendor/GLFW
-	url = https://github.com/glfw/glfw
+	url = https://github.com/gabime/spdlog
