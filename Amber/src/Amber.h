@@ -3,6 +3,7 @@
 // For use by Amber applications
 
 #include "Amber/Application.h" 
+#include "Amber/Layer.h"
 #include "Amber/Log.h"
 
 // Entry point: 

@@ -58,14 +58,17 @@ project "Amber"
 
 	filter "configurations:Debug"
 		defines "AM_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "AM_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "AM_DIST"
+		buildoptions "/MD"
 		symbols "On"
 		 
 
@@ -100,12 +103,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "AM_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 		
 	filter "configurations:Release"
 		defines "AM_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "AM_DIST"
+		buildoptions "/MD"
 		symbols "On"

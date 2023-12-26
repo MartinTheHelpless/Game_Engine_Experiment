@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -107,6 +108,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -130,6 +132,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -152,6 +155,8 @@
     <ClInclude Include="src\Amber\Events\Event.h" />
     <ClInclude Include="src\Amber\Events\KeyEvent.h" />
     <ClInclude Include="src\Amber\Events\MouseEvent.h" />
+    <ClInclude Include="src\Amber\Layer.h" />
+    <ClInclude Include="src\Amber\LayerStack.h" />
     <ClInclude Include="src\Amber\Log.h" />
     <ClInclude Include="src\Amber\Window.h" />
     <ClInclude Include="src\Platform\WindowsWindow.h" />
@@ -159,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Application.cpp" />
+    <ClCompile Include="src\Amber\Layer.cpp" />
+    <ClCompile Include="src\Amber\LayerStack.cpp" />
     <ClCompile Include="src\Amber\Log.cpp" />
     <ClCompile Include="src\Platform\WindowsWindow.cpp" />
     <ClCompile Include="src\precHeaders.cpp">

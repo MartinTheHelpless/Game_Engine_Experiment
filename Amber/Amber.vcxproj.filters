@@ -34,6 +34,12 @@
     <ClInclude Include="src\Amber\Events\MouseEvent.h">
       <Filter>Amber\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Amber\Layer.h">
+      <Filter>Amber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\LayerStack.h">
+      <Filter>Amber</Filter>
+    </ClInclude>
     <ClInclude Include="src\Amber\Log.h">
       <Filter>Amber</Filter>
     </ClInclude>
@@ -47,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Application.cpp">
+      <Filter>Amber</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Amber\Layer.cpp">
+      <Filter>Amber</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Amber\LayerStack.cpp">
       <Filter>Amber</Filter>
     </ClCompile>
     <ClCompile Include="src\Amber\Log.cpp">
