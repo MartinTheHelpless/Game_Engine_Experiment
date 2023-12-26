@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Amber {
 
 	class AMBER_API WindowResizeEvent : public Event {

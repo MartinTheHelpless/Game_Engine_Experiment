@@ -1,9 +1,8 @@
 #pragma once
 
-#include "Amber/Core.h"
+#include "precHeaders.h"
 
-#include <string>
-#include <functional>
+#include "Amber/Core.h"
 
 namespace Amber {
 	

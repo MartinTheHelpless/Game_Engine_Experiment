@@ -7,6 +7,9 @@
     <Filter Include="Amber\Events">
       <UniqueIdentifier>{F042D110-DCA5-60B5-852B-996B716D2C38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Amber.h" />
@@ -34,6 +37,13 @@
     <ClInclude Include="src\Amber\Log.h">
       <Filter>Amber</Filter>
     </ClInclude>
+    <ClInclude Include="src\Amber\Window.h">
+      <Filter>Amber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\WindowsWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\precHeaders.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Application.cpp">
@@ -42,5 +52,9 @@
     <ClCompile Include="src\Amber\Log.cpp">
       <Filter>Amber</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\precHeaders.cpp" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <memory>
-
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
@@ -40,8 +38,9 @@ namespace Amber{
 #define AM_CORE_WARN(...)   ::Amber::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define AM_WARN(...)        ::Amber::Log::GetClientLogger()->warn(__VA_ARGS__)
 
-#define AM_CORE_EROR(...)   ::Amber::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define AM_CORE_ERROR(...)   ::Amber::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define AM_ERROR(...)       ::Amber::Log::GetClientLogger()->error(__VA_ARGS__)
 
 #define AM_CORE_FATAL(...)  ::Amber::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 #define AM_FATAL(...)       ::Amber::Log::GetClientLogger()->fatal(__VA_ARGS__)
+ 
