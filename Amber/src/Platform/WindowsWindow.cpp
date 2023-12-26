@@ -28,33 +28,33 @@ namespace Amber {
 
 		if (!s_GLFWInitialized)
 		{
-			/*int success = glfwInit();*/
+			int success = glfwInit();
 			AM_CORE_ASSERT(success, "Error while initializing GLFW");
 		
 			s_GLFWInitialized = true;
 		}
 
-		/*
+		
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-		SetVSync(true);*/
+		SetVSync(true);
 	}
 
 	void WindowsWindow::Shutdown() {
-		/*glfwDestroyWindow(m_Window); */
+		glfwDestroyWindow(m_Window); 
 	}
 
 	void WindowsWindow::OnUpdate() {
-		/*glfwPollEvents();
-		glfwSwapBuffers(m_Window);*/
+		glfwPollEvents();
+		glfwSwapBuffers(m_Window);
 	}
 	
 	void WindowsWindow::SetVSync(bool enabled) {
-		/*if (enabled)
+		if (enabled)
 			glfwSwapInterval(1);
 		else
-			glfwSwapInterval(0);*/
+			glfwSwapInterval(0);
 	}
 
 	bool WindowsWindow::IsVSync() const { return m_Data.VSync; }
