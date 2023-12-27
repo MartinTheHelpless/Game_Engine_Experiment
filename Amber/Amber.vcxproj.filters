@@ -7,8 +7,14 @@
     <Filter Include="Amber\Events">
       <UniqueIdentifier>{F042D110-DCA5-60B5-852B-996B716D2C38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Amber\ImGui">
+      <UniqueIdentifier>{B65A8708-2210-00FE-AB04-FAD417B9F601}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +40,9 @@
     <ClInclude Include="src\Amber\Events\MouseEvent.h">
       <Filter>Amber\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Amber\ImGui\ImGuiLayer.h">
+      <Filter>Amber\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Amber\Layer.h">
       <Filter>Amber</Filter>
     </ClInclude>
@@ -46,6 +55,9 @@
     <ClInclude Include="src\Amber\Window.h">
       <Filter>Amber</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -55,6 +67,9 @@
     <ClCompile Include="src\Amber\Application.cpp">
       <Filter>Amber</Filter>
     </ClCompile>
+    <ClCompile Include="src\Amber\ImGui\ImGuiLayer.cpp">
+      <Filter>Amber\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Amber\Layer.cpp">
       <Filter>Amber</Filter>
     </ClCompile>
@@ -63,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="src\Amber\Log.cpp">
       <Filter>Amber</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>

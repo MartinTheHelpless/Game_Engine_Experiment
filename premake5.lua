@@ -7,13 +7,16 @@ workspace "Amber"
 	"Dist"
 	}
 
-
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Amber/vendor/GLFW/include"
+IncludeDir["Glad"] = "Amber/vendor/Glad/include"
+IncludeDir["ImGui"] = "Amber/vendor/imgui"
 
 include "Amber/vendor/GLFW"
+include "Amber/vendor/Glad"
+include "Amber/vendor/imgui"
 
 project "Amber"
 	location "Amber"
@@ -34,11 +37,15 @@ project "Amber"
 	includedirs{ 
 		"%{prj.name}/src",	
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 		}
 
 	links{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 		}
 
@@ -49,7 +56,8 @@ project "Amber"
 
 		defines { 
 		"AM_PLATFORM_WINDOWS", 
-		"AM_BUILD_DLL" 
+		"AM_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands{ 
@@ -64,12 +72,12 @@ project "Amber"
 	filter "configurations:Release"
 		defines "AM_RELEASE"
 		buildoptions "/MD"
-		symbols "On"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "AM_DIST"
 		buildoptions "/MD"
-		symbols "On"
+		optimize "On"
 		 
 
 project "Sandbox"
@@ -109,9 +117,9 @@ project "Sandbox"
 	filter "configurations:Release"
 		defines "AM_RELEASE"
 		buildoptions "/MD"
-		symbols "On"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "AM_DIST"
 		buildoptions "/MD"
-		symbols "On"
+		optimize "On"

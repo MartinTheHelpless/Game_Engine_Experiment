@@ -6,7 +6,7 @@ public:
 	ExampleLayer() : Layer("Example") {}
 
 	void OnUpdate() override {
-		AM_INFO("Example Layer :: Update");
+		// AM_INFO("Example Layer :: Update");
 	}
 
 	void OnEvent(Amber::Event& event) override
@@ -19,8 +19,11 @@ public:
 class Sandbox : public Amber::Application
 {
 public:
-	Sandbox() {
+	Sandbox() 
+	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Amber::ImGuiLayer());
+		AM_INFO("Overlay has been created");
 	}
 	
 	~Sandbox() {
