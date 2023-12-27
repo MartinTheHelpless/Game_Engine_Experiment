@@ -68,7 +68,11 @@ namespace Amber
 
 			m_Window->OnUpdate();
 
+			glClearColor(0, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 		}
+
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
