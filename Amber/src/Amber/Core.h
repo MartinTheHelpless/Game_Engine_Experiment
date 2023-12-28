@@ -10,6 +10,10 @@
 	#error Amber Only Supports Windows!
 #endif
 
+#ifdef AM_DEBUG
+	#define AM_ENABLE_ASSERTS
+#endif
+
 #ifdef AM_ENABLE_ASSERTS
 	#define AM_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak(); } }
 	#define AM_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak(); } }

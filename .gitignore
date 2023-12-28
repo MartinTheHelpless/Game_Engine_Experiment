@@ -397,3 +397,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+#Custom gitgnore files
+bin/
+bin-int/
+bin-int/Debug-windows-x86_64/Amber/vc143.idb
+bin-int/Debug-windows-x86_64/Sandbox/vc143.idb
