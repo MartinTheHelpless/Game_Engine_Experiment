@@ -6,12 +6,12 @@ public:
 	ExampleLayer() : Layer("Example") {}
 
 	void OnUpdate() override {
-		// AM_INFO("Example Layer :: Update");
+		// AM_INFO("Example Layer::Update");
 	}
 
 	void OnEvent(Amber::Event& event) override
 	{
-		AM_TRACE("{0}", event);
+		//AM_TRACE("{0}", event);
 	}
 
 };
@@ -23,7 +23,6 @@ public:
 	{
 		PushLayer(new ExampleLayer());
 		PushOverlay(new Amber::ImGuiLayer());
-		AM_INFO("Overlay has been created");
 	}
 	
 	~Sandbox() {

@@ -7,6 +7,8 @@ workspace "Amber"
 	"Dist"
 	}
 
+	startproject "Sandbox"
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
@@ -60,9 +62,7 @@ project "Amber"
 		"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands{ 
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
- 			}
+		postbuildcommands{ ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"") }
 
 	filter "configurations:Debug"
 		defines "AM_DEBUG"
