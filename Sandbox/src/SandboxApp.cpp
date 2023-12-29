@@ -7,6 +7,10 @@ public:
 
 	void OnUpdate() override {
 		// AM_INFO("Example Layer::Update");
+
+		if (Amber::Input::IsKeyPressed(AM_KEY_TAB))
+			AM_INFO("TAB has been pressed");
+
 	}
 
 	void OnEvent(Amber::Event& event) override

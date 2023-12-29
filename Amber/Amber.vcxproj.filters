@@ -49,6 +49,9 @@
     <ClInclude Include="src\Amber\Input.h">
       <Filter>Amber</Filter>
     </ClInclude>
+    <ClInclude Include="src\Amber\KeyCodes.h">
+      <Filter>Amber</Filter>
+    </ClInclude>
     <ClInclude Include="src\Amber\Layer.h">
       <Filter>Amber</Filter>
     </ClInclude>
@@ -56,6 +59,9 @@
       <Filter>Amber</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Log.h">
+      <Filter>Amber</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\MouseButtonCodes.h">
       <Filter>Amber</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Window.h">
