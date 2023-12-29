@@ -1,5 +1,6 @@
 #include <Amber.h>
 
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Amber::Layer {
 public:
@@ -11,6 +12,15 @@ public:
 		if (Amber::Input::IsKeyPressed(AM_KEY_TAB))
 			AM_INFO("TAB has been pressed");
 
+	}
+
+	virtual void OnImGuiRender() override
+	{
+	
+		ImGui::Begin("Test");
+		ImGui::Text("Hello");
+		ImGui::End();
+	
 	}
 
 	void OnEvent(Amber::Event& event) override
@@ -26,7 +36,6 @@ public:
 	Sandbox() 
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Amber::ImGuiLayer());
 	}
 	
 	~Sandbox() {

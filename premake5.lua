@@ -99,6 +99,7 @@ project "Sandbox"
 	includedirs { 
 		"Amber/vendor/spdlog/include",
 		"Amber/src",
+		"Amber/vendor",
 		"%{IncludeDir.glm}"
 	}
 

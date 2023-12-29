@@ -22,8 +22,12 @@ namespace Amber
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-		unsigned int id;
-		glGenVertexArrays(1, &id);
+		m_ImGuiLayer = new ImGuiLayer();
+
+		PushOverlay(m_ImGuiLayer);
+
+		// unsigned int id;
+		// glGenVertexArrays(1, &id);
 
 	}
 
@@ -64,14 +68,22 @@ namespace Amber
 
 		while (m_Running) {
 
+			glClearColor(0, 1, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 			 
 
+			m_ImGuiLayer->Begin();
+
+			for (Layer* layer : m_LayerStack) 
+				m_ImGuiLayer->OnImGuiRender();
+
+			m_ImGuiLayer->End();
+
 			m_Window->OnUpdate();
 
-			glClearColor(0, 1, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
 
 		}
 
