@@ -4,47 +4,47 @@
 
 class ExampleLayer : public Amber::Layer {
 public:
-	ExampleLayer() : Layer("Example") {}
-
-	void OnUpdate() override {
-		// AM_INFO("Example Layer::Update");
-
+	ExampleLayer()
+		: Layer("Example")
+	{
+	}
+	void OnUpdate() override
+	{
 		if (Amber::Input::IsKeyPressed(AM_KEY_TAB))
-			AM_INFO("TAB has been pressed");
-
+			AM_TRACE("Tab key is pressed (poll)!");
 	}
 
 	virtual void OnImGuiRender() override
 	{
-	
 		ImGui::Begin("Test");
-		ImGui::Text("Hello");
+		ImGui::Text("Hello World");
 		ImGui::End();
-	
 	}
 
 	void OnEvent(Amber::Event& event) override
 	{
-		//AM_TRACE("{0}", event);
+		if (event.GetEventType() == Amber::EventType::KeyPressed)
+		{
+			Amber::KeyPressedEvent& e = (Amber::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == AM_KEY_TAB)
+				AM_TRACE("Tab key is pressed (event)!");
+			AM_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
-
 };
-
 class Sandbox : public Amber::Application
 {
 public:
-	Sandbox() 
+	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		PushLayer(new ExampleLayer()); 
 	}
-	
-	~Sandbox() {
 
+	~Sandbox()
+	{
 	}
 };
- 
-Amber::Application* Amber::CreateApplication() {
-
+Amber::Application* Amber::CreateApplication()
+{
 	return new Sandbox();
-
 }

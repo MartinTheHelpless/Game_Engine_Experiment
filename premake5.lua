@@ -23,9 +23,10 @@ include "Amber/vendor/imgui"
 
 project "Amber"
 	location "Amber"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +56,6 @@ project "Amber"
 		}
 
 	filter "system:windows"
-		cppdialect "C++17" 
 		systemversion "latest"
 
 		defines { 
@@ -63,30 +63,29 @@ project "Amber"
 		"AM_BUILD_DLL",
 		"GLFW_INCLUDE_NONE"
 		}
-
-		postbuildcommands{ ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"") }
-
+ 
 	filter "configurations:Debug"
 		defines "AM_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 		
 	filter "configurations:Release"
 		defines "AM_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "AM_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 		 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "Off"
+	cppdialect "C++17" 
+	staticruntime "on"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -107,8 +106,7 @@ project "Sandbox"
 		"Amber"
 	}
 
-	filter "system:windows"
-		cppdialect "C++17" 
+	filter "system:windows" 
 		systemversion "latest"
 
 		defines {  "AM_PLATFORM_WINDOWS"  } 
@@ -116,14 +114,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "AM_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 		
 	filter "configurations:Release"
 		defines "AM_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "AM_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
