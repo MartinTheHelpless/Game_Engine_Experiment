@@ -48,11 +48,36 @@ namespace Amber
 
 		unsigned short indices[3] = { 0, 1, 2};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		 
+		std::string vertexSource= R"(
+			#version 330 core
+	
+			layout(location = 0) in vec3 a_Position;
 
-	// Vertex Array
-	// Vertex Buffer
-	// Index Buffer
-	// Shader
+			out vec3 v_Position;
+
+			void main()
+				{
+					v_Position = a_Position;
+					gl_Position = vec4(a_Position, 1.0); 
+				} 
+			)";
+
+		std::string fragmentSource = R"(
+			#version 330 core
+	
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+
+			void main()
+				{
+					
+					color = vec4(v_Position + 0.3, 1.0); 
+				} 
+			)";
+
+		m_Shader.reset(new Shader(vertexSource, fragmentSource));
 
 	}
 
@@ -91,8 +116,10 @@ namespace Amber
 			glClearColor(0.32f, 0.0f, 0.72f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			m_Shader->Bind();
+
 			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_POLYGON, 3, GL_UNSIGNED_SHORT, nullptr);
+			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, nullptr);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

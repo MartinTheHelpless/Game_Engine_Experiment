@@ -7,6 +7,8 @@
 #include "Amber/Events/Event.h"
 #include "Amber/Events/ApplicationEvent.h"
 
+#include "Amber/Renderer/Shader.h"
+
 #include "Amber/ImGui/ImGuiLayer.h"
 
 namespace Amber
@@ -35,6 +37,8 @@ namespace Amber
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
+		std::unique_ptr<Shader> m_Shader;
 
 	private:
 		static Application* s_Instance;

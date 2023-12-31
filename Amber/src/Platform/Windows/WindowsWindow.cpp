@@ -1,4 +1,4 @@
-#include "precHeaders.h"
+﻿#include "precHeaders.h"
 #include "WindowsWindow.h"
 
 #include "Amber/Events/ApplicationEvent.h"
@@ -117,6 +117,7 @@ namespace Amber {
 				{
 				case GLFW_PRESS:
 				{
+				 
 					MouseButtonPressedEvent event(button);
 					data.EventCallback(event);
 					break;
