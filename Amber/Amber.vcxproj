@@ -158,7 +158,9 @@
     <ClInclude Include="src\Amber\LayerStack.h" />
     <ClInclude Include="src\Amber\Log.h" />
     <ClInclude Include="src\Amber\MouseButtonCodes.h" />
+    <ClInclude Include="src\Amber\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Amber\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\precHeaders.h" />
@@ -170,6 +172,7 @@
     <ClCompile Include="src\Amber\Layer.cpp" />
     <ClCompile Include="src\Amber\LayerStack.cpp" />
     <ClCompile Include="src\Amber\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\precHeaders.cpp">

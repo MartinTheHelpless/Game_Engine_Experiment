@@ -6,6 +6,7 @@
 #include "Amber/LayerStack.h"
 #include "Amber/Events/Event.h"
 #include "Amber/Events/ApplicationEvent.h"
+
 #include "Amber/ImGui/ImGuiLayer.h"
 
 namespace Amber
@@ -32,6 +33,9 @@ namespace Amber
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
 	private:
 		static Application* s_Instance;
 	};
