@@ -74,6 +74,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Amber\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Amber\Renderer\Shader.h" />
+    <ClInclude Include="src\Amber\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Amber\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Application.cpp">
@@ -103,5 +106,8 @@
     <ClCompile Include="src\precHeaders.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Amber\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Amber\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Amber\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>

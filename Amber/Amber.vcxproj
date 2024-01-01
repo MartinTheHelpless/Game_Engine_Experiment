@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Amber\Renderer\Renderer.h" />
     <ClInclude Include="src\Amber.h" />
     <ClInclude Include="src\Amber\Application.h" />
     <ClInclude Include="src\Amber\Core.h" />
@@ -158,22 +159,27 @@
     <ClInclude Include="src\Amber\LayerStack.h" />
     <ClInclude Include="src\Amber\Log.h" />
     <ClInclude Include="src\Amber\MouseButtonCodes.h" />
+    <ClInclude Include="src\Amber\Renderer\Buffer.h" />
     <ClInclude Include="src\Amber\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Amber\Renderer\Shader.h" />
     <ClInclude Include="src\Amber\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\precHeaders.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Amber\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Amber\Application.cpp" />
     <ClCompile Include="src\Amber\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Amber\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Amber\Layer.cpp" />
     <ClCompile Include="src\Amber\LayerStack.cpp" />
     <ClCompile Include="src\Amber\Log.cpp" />
+    <ClCompile Include="src\Amber\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Amber\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
