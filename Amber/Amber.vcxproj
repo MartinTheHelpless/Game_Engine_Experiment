@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Amber\Renderer\Renderer.h" />
     <ClInclude Include="src\Amber.h" />
     <ClInclude Include="src\Amber\Application.h" />
@@ -168,8 +169,10 @@
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\precHeaders.h" />
+    <ClInclude Include="src\Amber\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Amber\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Amber\Application.cpp" />
     <ClCompile Include="src\Amber\ImGui\ImGuiBuild.cpp" />
@@ -186,6 +189,7 @@
     <ClCompile Include="src\precHeaders.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Amber\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
