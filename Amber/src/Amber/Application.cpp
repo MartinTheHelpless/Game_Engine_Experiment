@@ -4,46 +4,13 @@
 #include "Amber/Events/Event.h"
 #include "Amber/Log.h"
 #include "Input.h"
-
-#include <glad/glad.h>
+#include "Amber/Renderer/Renderer.h"
 
 namespace Amber
 {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
-
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) 
-	{
-		switch (type)
-		{ 
-		case Amber::ShaderDataType::Float:
-			return GL_FLOAT;
-		case Amber::ShaderDataType::Float2:
-			return GL_FLOAT;
-		case Amber::ShaderDataType::Float3:
-			return GL_FLOAT;
-		case Amber::ShaderDataType::Float4:
-			return GL_FLOAT;
-		case Amber::ShaderDataType::Mat3:
-			return GL_FLOAT;
-		case Amber::ShaderDataType::Mat4:
-			return GL_FLOAT;
-		case Amber::ShaderDataType::Int:
-			return GL_INT;
-		case Amber::ShaderDataType::Int2:
-			return GL_INT;
-		case Amber::ShaderDataType::Int3:
-			return GL_INT;
-		case Amber::ShaderDataType::Int4:
-			return GL_INT;
-		case Amber::ShaderDataType::Bool:
-			return GL_BOOL;
-		default:
-			AM_ASSERT(false, "Unknown ShaderDataType!");
-			return NULL;
-		}
-	}
 
 	Application::Application()
 	{
@@ -207,20 +174,21 @@ namespace Amber
 	void Application::Run()
 	{
 		while (m_Running)
-		{
-			glClearColor(0.32f, 0.0f, 0.72f, 1);
-			glClear(GL_COLOR_BUFFER_BIT); 
+		{ 
+
+			RenderCommand::SetClearColor({ 0.32f, 0.0f, 0.72f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
+			Renderer::Submit(m_VertexArray);
 
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
+			Renderer::EndScene();
+			 
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
