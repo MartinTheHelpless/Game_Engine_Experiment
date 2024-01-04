@@ -6,6 +6,7 @@
 #include "Amber/LayerStack.h"
 #include "Amber/Events/Event.h"
 #include "Amber/Events/ApplicationEvent.h"
+#include "Amber/Renderer/OrthographicCamera.h"
 
 #include "Amber/Renderer/Shader.h"
 #include "Amber/Renderer/Buffer.h"
@@ -43,6 +44,8 @@ namespace Amber
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

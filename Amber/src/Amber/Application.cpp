@@ -1,7 +1,6 @@
 #include "precHeaders.h"
 #include "Application.h"
-
-#include "Amber/Events/Event.h"
+ 
 #include "Amber/Log.h"
 #include "Input.h"
 #include "Amber/Renderer/Renderer.h"
@@ -12,12 +11,11 @@ namespace Amber
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application() : m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		AM_CORE_ASSERT(!s_Instance, "Application already exists! ");
 
-		s_Instance = this;
-
+		s_Instance = this; 
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
@@ -83,14 +81,16 @@ namespace Amber
 			layout(location = 0) in vec3 a_Position; 
 			layout(location = 1) in vec4 a_Color; 
 
+			uniform mat4 u_ViewProjectionMat;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
 			void main()
 				{
 					v_Position = a_Position;
-					gl_Position = vec4(a_Position, 1.0); 
 					v_Color = a_Color;
+					gl_Position = u_ViewProjectionMat * vec4(a_Position, 1.0); 
 				} 
 			)";
 
@@ -117,12 +117,14 @@ namespace Amber
 	
 			layout(location = 0) in vec3 a_Position; 
 
+			uniform mat4 u_ViewProjectionMat;
+
 			out vec3 v_Position;
 
 			void main()
 				{
 					v_Position = a_Position;
-					gl_Position = vec4(a_Position, 1.0); 
+					gl_Position = u_ViewProjectionMat * vec4(a_Position, 1.0); 
 				} 
 			)";
 
@@ -173,19 +175,22 @@ namespace Amber
 
 	void Application::Run()
 	{
+
+		// m_Camera.SetPosition({0.2f,0.2f, 0.0f});
+		m_Camera.SetRotation(30.0f);
+
+
 		while (m_Running)
-		{ 
+		{
 
 			RenderCommand::SetClearColor({ 0.32f, 0.0f, 0.72f, 1 });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
-
-			m_BlueShader->Bind();
-			Renderer::Submit(m_SquareVA);
-
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
+			Renderer::BeginScene(m_Camera);
+			 
+			Renderer::Submit(m_BlueShader, m_SquareVA);
+			 
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
 			 
