@@ -83,6 +83,7 @@
     <ClInclude Include="src\Amber\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Amber\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Amber\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Application.cpp">

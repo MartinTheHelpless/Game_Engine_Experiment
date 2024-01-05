@@ -6,17 +6,15 @@
 #include "Amber/LayerStack.h"
 #include "Amber/Events/Event.h"
 #include "Amber/Events/ApplicationEvent.h"
-#include "Amber/Renderer/OrthographicCamera.h"
-
-#include "Amber/Renderer/Shader.h"
-#include "Amber/Renderer/Buffer.h"
-#include "Amber/Renderer/VertexArray.h"
+#include "Amber/Renderer/OrthographicCamera.h" 
 
 #include "Amber/ImGui/ImGuiLayer.h"
 
+#include "Amber/Core/Timestep.h"
+
 namespace Amber
 {
-	class AMBER_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -33,21 +31,17 @@ namespace Amber
 		}
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;  
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
+	
 	};
 	// To be defined in CLIENT
 	Application* CreateApplication();

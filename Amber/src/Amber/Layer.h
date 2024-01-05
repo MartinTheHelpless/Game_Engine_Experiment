@@ -3,6 +3,8 @@
 #include "Amber/Core.h"
 #include "Amber/Events/Event.h" 
 
+#include "Amber/Core/Timestep.h"
+
 namespace Amber {
 
 	class AMBER_API Layer
@@ -14,7 +16,7 @@ namespace Amber {
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 		virtual void OnImGuiRender() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep timestep) {}
 		virtual void OnEvent(Event& event) {}
 
 		inline const std::string& GetName() const { return m_DebugName; }
