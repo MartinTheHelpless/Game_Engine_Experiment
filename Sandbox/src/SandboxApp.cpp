@@ -2,6 +2,9 @@
 
 #include "imgui/imgui.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+#include <glm/gtc/type_ptr.hpp>
+
 class ExampleLayer : public Amber::Layer {
 public:
 	ExampleLayer()
@@ -95,10 +98,10 @@ public:
 				} 
 			)";
 
-		m_Shader.reset(new Amber::Shader(vertexSource, fragmentSource));
+		m_Shader.reset(Amber::Shader::Create(vertexSource, fragmentSource));
 
 
-		std::string blueShaderVertexSource = R"(
+		std::string flatColorShader = R"(
 			#version 330 core
 	
 			layout(location = 0) in vec3 a_Position; 
@@ -115,20 +118,22 @@ public:
 				} 
 			)";
 
-		std::string blueShaderFragmentSource = R"(
+		std::string flatShaderFragmentSource = R"(
 			#version 330 core
 	
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 
+			uniform vec4 u_Color;
+
 			void main()
 				{ 
-					color = vec4(0.2, 0.3, 0.8, 1.0); 
+					color = u_Color; 
 				} 
 			)";
 
-		m_BlueShader.reset(new Amber::Shader(blueShaderVertexSource, blueShaderFragmentSource));
+		m_FlatShader.reset(Amber::Shader::Create(flatColorShader, flatShaderFragmentSource));
 
 	}
 
@@ -176,8 +181,10 @@ public:
 
 		Amber::Renderer::BeginScene(m_Camera);
 
-		
-		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.08f));
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.08f)); 
+		 
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_FlatShader)->Bind();
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_FlatShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 
 		for (int i = 0; i < 20; i++)
 		{ 
@@ -185,8 +192,7 @@ public:
 			{
 				glm::vec3 position(m_SquarePosition.x + j * 0.09, m_SquarePosition.y + i * 0.09f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * scale;
-
-				Amber::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+				Amber::Renderer::Submit(m_FlatShader, m_SquareVA, transform);
 			}
 		}
 
@@ -197,6 +203,11 @@ public:
 
 	virtual void OnImGuiRender() override
 	{ 
+		ImGui::Begin("Color Settings");
+
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+
+		ImGui::End();
 
 	}
 
@@ -239,11 +250,11 @@ public:
 
 	private:
 
-		std::shared_ptr<Amber::Shader> m_Shader;
-		std::shared_ptr<Amber::VertexArray> m_VertexArray;
+		Amber::Ref<Amber::Shader> m_Shader;
+		Amber::Ref<Amber::VertexArray> m_VertexArray;
 
-		std::shared_ptr<Amber::Shader> m_BlueShader;
-		std::shared_ptr<Amber::VertexArray> m_SquareVA;
+		Amber::Ref<Amber::Shader> m_FlatShader;
+		Amber::Ref<Amber::VertexArray> m_SquareVA;
 
 		Amber::OrthographicCamera m_Camera;
 
@@ -255,6 +266,8 @@ public:
 
 		glm::vec3 m_SquarePosition;
 		float m_SquareSpeed = 1.0f;
+
+		glm::vec4 m_SquareColor = {0.2f, 0.3f, 0.8f, 1.0f};
 
 	};
 class Sandbox : public Amber::Application
