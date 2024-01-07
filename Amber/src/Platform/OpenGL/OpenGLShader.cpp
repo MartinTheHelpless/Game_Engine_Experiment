@@ -103,7 +103,10 @@ namespace Amber
 			in.close();
 		}
 		else
-			AM_CORE_ASSERT(false, "Error while opening a shader. Plase check the file path: {0}", filepath);
+		{
+			AM_CORE_WARN("Invalid path: {0}", filepath);
+			AM_CORE_ASSERT(false, "Error while opening a shader. Plase check the file path");
+		}
 
 		return result;
 	}

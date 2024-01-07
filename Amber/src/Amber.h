@@ -14,7 +14,7 @@
 
 #include "Amber/ImGui/ImGuiLayer.h"
 
-#include "Amber/Renderer/OrthographicCamera.h" 
+#include "Amber/Renderer/OrthographicCameraController.h" 
 #include "Amber/Renderer/RenderCommand.h" 
 #include "Amber/Renderer/VertexArray.h"
 #include "Amber/Renderer/Renderer.h"

@@ -8,7 +8,7 @@
 class ExampleLayer : public Amber::Layer {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f, 0.0f, 0.0f), m_SquarePosition(0.0f)
+		: Layer("Example"), m_CameraController((float)(1280.0f / 720.0f))
 	{
 
 		m_VertexArray.reset(Amber::VertexArray::Create());
@@ -79,47 +79,13 @@ public:
 
 	void OnUpdate(Amber::Timestep ts) override
 	{  
+   
+		m_CameraController.OnUpdate(ts);
 
-		if (Amber::Input::IsKeyPressed(AM_KEY_LEFT) || Amber::Input::IsKeyPressed(AM_KEY_A))
-			m_CameraPosition.x -= m_CameraSpeed * ts;
-
-		else if (Amber::Input::IsKeyPressed(AM_KEY_RIGHT) || Amber::Input::IsKeyPressed(AM_KEY_D))
-			m_CameraPosition.x += m_CameraSpeed * ts;
-		
-		if (Amber::Input::IsKeyPressed(AM_KEY_DOWN) || Amber::Input::IsKeyPressed(AM_KEY_S))
-			m_CameraPosition.y -= m_CameraSpeed * ts;
-
-		else if (Amber::Input::IsKeyPressed(AM_KEY_UP) || Amber::Input::IsKeyPressed(AM_KEY_W))
-			m_CameraPosition.y += m_CameraSpeed * ts;
-		 
-
-
-		if (Amber::Input::IsKeyPressed(AM_KEY_J))
-			m_SquarePosition.x -= m_SquareSpeed * ts;
-
-		else if (Amber::Input::IsKeyPressed(AM_KEY_L))
-			m_SquarePosition.x += m_SquareSpeed * ts;
-
-		if (Amber::Input::IsKeyPressed(AM_KEY_I))
-			m_SquarePosition.y += m_SquareSpeed * ts;
-
-		else if (Amber::Input::IsKeyPressed(AM_KEY_K))
-			m_SquarePosition.y -= m_SquareSpeed* ts;
-		 
-
-		if (Amber::Input::IsKeyPressed(AM_KEY_Q))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
-		else if (Amber::Input::IsKeyPressed(AM_KEY_E))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation); 
-  
 		Amber::RenderCommand::SetClearColor({ 0.12f, 0.12f, 0.12f, 1 });
 		Amber::RenderCommand::Clear();
 
-		Amber::Renderer::BeginScene(m_Camera);
+		Amber::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.08f)); 
 		 
@@ -157,40 +123,15 @@ public:
 
 	}
 
-	void OnEvent(Amber::Event& event) override
+	void OnEvent(Amber::Event& e) override
 	{ 
 
-		//Amber::EventDispatcher dispatcher(event);
-
-		//dispatcher.Dispatch<Amber::KeyPressedEvent>(AM_BIND_EVENT_FN(ExampleLayer::OnKeyPresseEvent));
+		m_CameraController.OnEvent(e);
 
 	}
 
 	bool OnKeyPresseEvent(Amber::KeyPressedEvent& event) 
-	{
-
-		switch (event.GetKeyCode())
-		{
-			case AM_KEY_LEFT:
-				m_CameraPosition.x -= m_CameraSpeed; 
-				break;
-
-			case AM_KEY_RIGHT:
-				m_CameraPosition.x += m_CameraSpeed; 
-				break;
-
-			case AM_KEY_DOWN:
-				m_CameraPosition.y -= m_CameraSpeed; 
-				break;
-
-			case AM_KEY_UP:
-				m_CameraPosition.y += m_CameraSpeed;
-				break;
-
-			default:
-				break;
-		}
-		
+	{ 
 		return false;
 	}
 
@@ -205,16 +146,9 @@ public:
 
 		Amber::Ref<Amber::Texture2D> m_Texture, m_DropTexture;
 
-		Amber::OrthographicCamera m_Camera;
-
-		glm::vec3 m_CameraPosition;
-		float m_CameraRotation = 0.0f;
-
-		float m_CameraSpeed = 2.0f;
-		float m_CameraRotationSpeed = 60.0f;
-
-		glm::vec3 m_SquarePosition;
-		float m_SquareSpeed = 1.0f;
+		Amber::OrthographicCameraController m_CameraController;
+		 
+		glm::vec3 m_SquarePosition = { 0.0f, 0.0f, 0.0f};
 
 		glm::vec4 m_SquareColor = {0.2f, 0.3f, 0.8f, 1.0f};
 
