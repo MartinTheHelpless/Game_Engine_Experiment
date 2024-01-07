@@ -18,6 +18,7 @@
 #include "Amber/Renderer/RenderCommand.h" 
 #include "Amber/Renderer/VertexArray.h"
 #include "Amber/Renderer/Renderer.h"
+#include "Amber/Renderer/Texture.h"
 #include "Amber/Renderer/Buffer.h"
 #include "Amber/Renderer/Shader.h"
 

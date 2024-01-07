@@ -40,18 +40,19 @@ public:
 
 		m_SquareVA.reset(Amber::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		std::shared_ptr<Amber::VertexBuffer> squareVB;
 		squareVB.reset(Amber::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 		Amber::BufferLayout squareLayout = {
-			{ Amber::ShaderDataType::Float3, "a_Position" }
+			{ Amber::ShaderDataType::Float3, "a_Position" },
+			{ Amber::ShaderDataType::Float2, "a_TextCoord" }
 		};
 
 		squareVB->SetLayout(squareLayout);
@@ -135,6 +136,46 @@ public:
 
 		m_FlatShader.reset(Amber::Shader::Create(flatColorShader, flatShaderFragmentSource));
 
+		std::string textureShader = R"(
+			#version 330 core
+	
+			layout(location = 0) in vec3 a_Position; 
+			layout(location = 1) in vec2 a_TextCoord; 
+
+			uniform mat4 u_ViewProjectionMat;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TextCoord;
+
+			void main()
+				{
+					v_TextCoord = a_TextCoord;
+					gl_Position = u_ViewProjectionMat * u_Transform * vec4(a_Position, 1.0); 
+				} 
+			)";
+
+		std::string textureShaderFragmentSource = R"(
+			#version 330 core
+	
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+			in vec2 v_TextCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main()
+				{ 
+					color = texture(u_Texture, v_TextCoord);
+				} 
+			)";
+
+		m_TextureShader.reset(Amber::Shader::Create(textureShader, textureShaderFragmentSource));
+
+		m_Texture = Amber::Texture2D::Create("assets/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Color", 0);
 	}
 
 	void OnUpdate(Amber::Timestep ts) override
@@ -196,7 +237,12 @@ public:
 			}
 		}
 
-		Amber::Renderer::Submit(m_Shader, m_VertexArray);
+		m_Texture->Bind();
+
+		Amber::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+
+		// Amber::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Amber::Renderer::EndScene();
 	}
@@ -253,8 +299,10 @@ public:
 		Amber::Ref<Amber::Shader> m_Shader;
 		Amber::Ref<Amber::VertexArray> m_VertexArray;
 
-		Amber::Ref<Amber::Shader> m_FlatShader;
+		Amber::Ref<Amber::Shader> m_FlatShader, m_TextureShader;
 		Amber::Ref<Amber::VertexArray> m_SquareVA;
+
+		Amber::Ref<Amber::Texture2D> m_Texture;
 
 		Amber::OrthographicCamera m_Camera;
 

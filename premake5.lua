@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "Amber/vendor/GLFW/include"
 IncludeDir["Glad"] = "Amber/vendor/Glad/include"
 IncludeDir["ImGui"] = "Amber/vendor/imgui"
 IncludeDir["glm"] = "Amber/vendor/glm"
+IncludeDir["stb_image"] = "Amber/vendor/stb_image"
 
 include "Amber/vendor/GLFW"
 include "Amber/vendor/Glad"
@@ -36,7 +37,11 @@ project "Amber"
 
 	files{ 
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.cpp", 
+		"%{prj.name}/vendor/stb_image/**.h", 
+		"%{prj.name}/vendor/glm/glm/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.ini" 
 		}
 
 	includedirs{ 
@@ -45,7 +50,8 @@ project "Amber"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 		}
 
 	links{
@@ -92,7 +98,7 @@ project "Sandbox"
 
 	files{ 
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp" 
+		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs { 
