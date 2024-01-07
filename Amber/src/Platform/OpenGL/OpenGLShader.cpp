@@ -23,7 +23,8 @@ namespace Amber
 		return 0;
 	}
 	 
-	OpenGLShader::OpenGLShader(const std::string& filepath)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& filepath) :
+		m_Name(name)
 	{
 		std::string source = ReadFile(filepath);
 		auto shaderSrc = PreProcess(source);
@@ -92,7 +93,7 @@ namespace Amber
 	{
 		std::string result;
 
-		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
 		{
 			in.seekg(0, std::ios::end);
@@ -136,9 +137,10 @@ namespace Amber
 	void OpenGLShader::Compile(std::unordered_map<GLenum, std::string>& shaderSources)
 	{  
 		GLuint program = glCreateProgram(); 
+		AM_CORE_ASSERT(shaderSources.size() <= 4, "Too many shaders in one file");
 
-		std::vector<GLenum> glShaderIDs(shaderSources.size());
-
+		std::array<GLenum, 3> glShaderIDs; 
+		int index = 0;
 		for (auto& kv : shaderSources)
 		{
 			GLenum type = kv.first;
@@ -169,7 +171,7 @@ namespace Amber
 			}
 
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[index++] = shader;
 		}  
 
 		glLinkProgram(program);

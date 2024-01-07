@@ -63,12 +63,10 @@ public:
 		std::shared_ptr<Amber::IndexBuffer> squareIB;
 		squareIB.reset(Amber::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB); 
-
-		m_Shader.reset(Amber::Shader::Create("assets/shaders/ColorfulShader.glsl"));
-
-		m_FlatShader.reset(Amber::Shader::Create("assets/shaders/FlatColorShader.glsl")); 
-
-		m_TextureShader.reset(Amber::Shader::Create("assets/shaders/Texture.glsl"));
+		 
+		m_TextureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+		m_FlatShader = m_ShaderLibrary.Load("assets/shaders/Flat.glsl");
+		m_Shader = m_ShaderLibrary.Load("assets/shaders/Colorful.glsl");
 
 		m_Texture = Amber::Texture2D::Create("assets/Textures/Checkerboard.png");
 
@@ -76,7 +74,7 @@ public:
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Color", 0);
-		 
+
 	}
 
 	void OnUpdate(Amber::Timestep ts) override
@@ -198,10 +196,11 @@ public:
 
 	private:
 
-		Amber::Ref<Amber::Shader> m_Shader;
+		Amber::ShaderLibrary m_ShaderLibrary;
+		 
 		Amber::Ref<Amber::VertexArray> m_VertexArray;
 
-		Amber::Ref<Amber::Shader> m_FlatShader, m_TextureShader;
+		Amber::Ref<Amber::Shader> m_FlatShader, m_TextureShader, m_Shader;
 		Amber::Ref<Amber::VertexArray> m_SquareVA;
 
 		Amber::Ref<Amber::Texture2D> m_Texture, m_DropTexture;
