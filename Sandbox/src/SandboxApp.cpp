@@ -62,120 +62,21 @@ public:
 		unsigned int squareIndices[6] = { 0, 1, 2, 2 ,3 ,0 };
 		std::shared_ptr<Amber::IndexBuffer> squareIB;
 		squareIB.reset(Amber::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		m_SquareVA->SetIndexBuffer(squareIB);
+		m_SquareVA->SetIndexBuffer(squareIB); 
 
-		std::string vertexSource = R"(
-			#version 330 core
-	
-			layout(location = 0) in vec3 a_Position; 
-			layout(location = 1) in vec4 a_Color; 
+		m_Shader.reset(Amber::Shader::Create("assets/shaders/ColorfulShader.glsl"));
 
-			uniform mat4 u_ViewProjectionMat;
-			uniform mat4 u_Transform;
+		m_FlatShader.reset(Amber::Shader::Create("assets/shaders/FlatColorShader.glsl")); 
 
-			out vec3 v_Position;
-			out vec4 v_Color;
+		m_TextureShader.reset(Amber::Shader::Create("assets/shaders/Texture.glsl"));
 
-			void main()
-				{
-					v_Position = a_Position;
-					v_Color = a_Color;
-					gl_Position = u_ViewProjectionMat * u_Transform * vec4(a_Position, 1.0); 
-				} 
-			)";
+		m_Texture = Amber::Texture2D::Create("assets/Textures/Checkerboard.png");
 
-		std::string fragmentSource = R"(
-			#version 330 core
-	
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-			in vec4 v_Color;
-
-			void main()
-				{ 
-					color = vec4(v_Position + 0.3, 1.0); 
-					color = v_Color;
-				} 
-			)";
-
-		m_Shader.reset(Amber::Shader::Create(vertexSource, fragmentSource));
-
-
-		std::string flatColorShader = R"(
-			#version 330 core
-	
-			layout(location = 0) in vec3 a_Position; 
-
-			uniform mat4 u_ViewProjectionMat;
-			uniform mat4 u_Transform;
-
-			out vec3 v_Position;
-
-			void main()
-				{
-					v_Position = a_Position;
-					gl_Position = u_ViewProjectionMat * u_Transform * vec4(a_Position, 1.0); 
-				} 
-			)";
-
-		std::string flatShaderFragmentSource = R"(
-			#version 330 core
-	
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-
-			uniform vec4 u_Color;
-
-			void main()
-				{ 
-					color = u_Color; 
-				} 
-			)";
-
-		m_FlatShader.reset(Amber::Shader::Create(flatColorShader, flatShaderFragmentSource));
-
-		std::string textureShader = R"(
-			#version 330 core
-	
-			layout(location = 0) in vec3 a_Position; 
-			layout(location = 1) in vec2 a_TextCoord; 
-
-			uniform mat4 u_ViewProjectionMat;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TextCoord;
-
-			void main()
-				{
-					v_TextCoord = a_TextCoord;
-					gl_Position = u_ViewProjectionMat * u_Transform * vec4(a_Position, 1.0); 
-				} 
-			)";
-
-		std::string textureShaderFragmentSource = R"(
-			#version 330 core
-	
-			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
-			in vec2 v_TextCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-				{ 
-					color = texture(u_Texture, v_TextCoord);
-				} 
-			)";
-
-		m_TextureShader.reset(Amber::Shader::Create(textureShader, textureShaderFragmentSource));
-
-		m_Texture = Amber::Texture2D::Create("assets/Checkerboard.png");
+		m_DropTexture = Amber::Texture2D::Create("assets/Textures/Drop.png");
 
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Amber::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Color", 0);
+		 
 	}
 
 	void OnUpdate(Amber::Timestep ts) override
@@ -238,7 +139,8 @@ public:
 		}
 
 		m_Texture->Bind();
-
+		Amber::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		m_DropTexture->Bind();
 		Amber::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
@@ -302,7 +204,7 @@ public:
 		Amber::Ref<Amber::Shader> m_FlatShader, m_TextureShader;
 		Amber::Ref<Amber::VertexArray> m_SquareVA;
 
-		Amber::Ref<Amber::Texture2D> m_Texture;
+		Amber::Ref<Amber::Texture2D> m_Texture, m_DropTexture;
 
 		Amber::OrthographicCamera m_Camera;
 
