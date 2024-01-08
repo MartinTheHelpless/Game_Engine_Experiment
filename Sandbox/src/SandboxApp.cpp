@@ -128,6 +128,9 @@ public:
 
 		m_CameraController.OnEvent(e);
 
+		if (e.GetEventType() == Amber::EventType::WindowResize) 
+			auto& re = (Amber::WindowResizeEvent&)e; 
+
 	}
 
 	bool OnKeyPresseEvent(Amber::KeyPressedEvent& event) 
