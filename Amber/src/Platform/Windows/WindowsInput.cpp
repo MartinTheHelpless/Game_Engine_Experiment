@@ -1,7 +1,7 @@
 #include "precHeaders.h"
 #include "WindowsInput.h"
 
-#include "Amber/Application.h"
+#include "Amber/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Amber

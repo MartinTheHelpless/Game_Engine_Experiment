@@ -143,33 +143,34 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Amber\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Amber.h" />
-    <ClInclude Include="src\Amber\Application.h" />
-    <ClInclude Include="src\Amber\Core.h" />
+    <ClInclude Include="src\Amber\Core\Application.h" />
+    <ClInclude Include="src\Amber\Core\Core.h" />
+    <ClInclude Include="src\Amber\Core\EntryPoint.h" />
+    <ClInclude Include="src\Amber\Core\Input.h" />
+    <ClInclude Include="src\Amber\Core\KeyCodes.h" />
+    <ClInclude Include="src\Amber\Core\Layer.h" />
+    <ClInclude Include="src\Amber\Core\LayerStack.h" />
+    <ClInclude Include="src\Amber\Core\Log.h" />
+    <ClInclude Include="src\Amber\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Amber\Core\Timestep.h" />
-    <ClInclude Include="src\Amber\EntryPoint.h" />
+    <ClInclude Include="src\Amber\Core\Window.h" />
     <ClInclude Include="src\Amber\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Amber\Events\Event.h" />
     <ClInclude Include="src\Amber\Events\KeyEvent.h" />
     <ClInclude Include="src\Amber\Events\MouseEvent.h" />
     <ClInclude Include="src\Amber\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Amber\Input.h" />
-    <ClInclude Include="src\Amber\KeyCodes.h" />
-    <ClInclude Include="src\Amber\Layer.h" />
-    <ClInclude Include="src\Amber\LayerStack.h" />
-    <ClInclude Include="src\Amber\Log.h" />
-    <ClInclude Include="src\Amber\MouseButtonCodes.h" />
+    <ClInclude Include="src\Amber\OrthographicCameraController.h" />
     <ClInclude Include="src\Amber\Renderer\Buffer.h" />
     <ClInclude Include="src\Amber\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Amber\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Amber\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Amber\Renderer\Renderer.h" />
+    <ClInclude Include="src\Amber\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Amber\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Amber\Renderer\Shader.h" />
     <ClInclude Include="src\Amber\Renderer\Texture.h" />
     <ClInclude Include="src\Amber\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Amber\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -182,17 +183,20 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Amber\Renderer\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\Amber\Application.cpp" />
+    <ClCompile Include="src\Amber\Core\Application.cpp">
+      <ObjectFileName>$(IntDir)\Application1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\Amber\Core\Layer.cpp" />
+    <ClCompile Include="src\Amber\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Amber\Core\Log.cpp" />
     <ClCompile Include="src\Amber\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Amber\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Amber\Layer.cpp" />
-    <ClCompile Include="src\Amber\LayerStack.cpp" />
-    <ClCompile Include="src\Amber\Log.cpp" />
+    <ClCompile Include="src\Amber\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Amber\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Amber\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Amber\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Amber\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Amber\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Amber\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Amber\Renderer\Shader.cpp" />
     <ClCompile Include="src\Amber\Renderer\Texture.cpp" />

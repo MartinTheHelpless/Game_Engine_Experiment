@@ -1,8 +1,8 @@
 #include "precHeaders.h"
-#include "Application.h"
- 
-#include "Amber/Log.h"
-#include "Input.h"
+#include "Amber/Core/Application.h"
+
+#include "Amber/Core/Log.h"
+#include "Amber/Core/Input.h"
 #include "Amber/Renderer/Renderer.h"
 
 #include <glfw/glfw3.h>
@@ -17,15 +17,15 @@ namespace Amber
 	{
 		AM_CORE_ASSERT(!s_Instance, "Application already exists! ");
 
-		s_Instance = this; 
+		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent)); 
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
-		PushOverlay(m_ImGuiLayer); 
+		PushOverlay(m_ImGuiLayer);
 
 	}
 
@@ -60,14 +60,14 @@ namespace Amber
 	}
 
 	void Application::Run()
-	{ 
+	{
 		while (m_Running)
-		{ 
+		{
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			if(!m_Minimized)
+			if (!m_Minimized)
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(timestep);
 

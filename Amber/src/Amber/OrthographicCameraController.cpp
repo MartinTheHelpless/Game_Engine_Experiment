@@ -1,8 +1,8 @@
 #include "precHeaders.h"
 #include "OrthographicCameraController.h"
 
-#include "Amber/Input.h"
-#include "Amber/KeyCodes.h"
+#include "Amber/Core/Input.h"
+#include "Amber/Core/KeyCodes.h"
 
 namespace Amber
 {

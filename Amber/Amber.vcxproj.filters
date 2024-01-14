@@ -48,17 +48,38 @@
     <ClInclude Include="src\Amber.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Amber\Application.h">
-      <Filter>src\Amber</Filter>
+    <ClInclude Include="src\Amber\Core\Application.h">
+      <Filter>src\Amber\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Amber\Core.h">
-      <Filter>src\Amber</Filter>
+    <ClInclude Include="src\Amber\Core\Core.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\EntryPoint.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\Input.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\KeyCodes.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\Layer.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\LayerStack.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\Log.h">
+      <Filter>src\Amber\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Amber\Core\MouseButtonCodes.h">
+      <Filter>src\Amber\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Core\Timestep.h">
       <Filter>src\Amber\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Amber\EntryPoint.h">
-      <Filter>src\Amber</Filter>
+    <ClInclude Include="src\Amber\Core\Window.h">
+      <Filter>src\Amber\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Events\ApplicationEvent.h">
       <Filter>src\Amber\Events</Filter>
@@ -75,22 +96,7 @@
     <ClInclude Include="src\Amber\ImGui\ImGuiLayer.h">
       <Filter>src\Amber\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Amber\Input.h">
-      <Filter>src\Amber</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Amber\KeyCodes.h">
-      <Filter>src\Amber</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Amber\Layer.h">
-      <Filter>src\Amber</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Amber\LayerStack.h">
-      <Filter>src\Amber</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Amber\Log.h">
-      <Filter>src\Amber</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Amber\MouseButtonCodes.h">
+    <ClInclude Include="src\Amber\OrthographicCameraController.h">
       <Filter>src\Amber</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Renderer\Buffer.h">
@@ -119,9 +125,6 @@
     </ClInclude>
     <ClInclude Include="src\Amber\Renderer\VertexArray.h">
       <Filter>src\Amber\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Amber\Window.h">
-      <Filter>src\Amber</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -153,11 +156,20 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Amber\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="src\Amber\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Amber\Application.cpp">
-      <Filter>src\Amber</Filter>
+    <ClCompile Include="src\Amber\Core\Application.cpp">
+      <Filter>src\Amber\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Amber\Core\Layer.cpp">
+      <Filter>src\Amber\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Amber\Core\LayerStack.cpp">
+      <Filter>src\Amber\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Amber\Core\Log.cpp">
+      <Filter>src\Amber\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Amber\ImGui\ImGuiBuild.cpp">
       <Filter>src\Amber\ImGui</Filter>
@@ -165,13 +177,7 @@
     <ClCompile Include="src\Amber\ImGui\ImGuiLayer.cpp">
       <Filter>src\Amber\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Amber\Layer.cpp">
-      <Filter>src\Amber</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Amber\LayerStack.cpp">
-      <Filter>src\Amber</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Amber\Log.cpp">
+    <ClCompile Include="src\Amber\OrthographicCameraController.cpp">
       <Filter>src\Amber</Filter>
     </ClCompile>
     <ClCompile Include="src\Amber\Renderer\Buffer.cpp">
@@ -231,6 +237,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Amber\Renderer\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Amber\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

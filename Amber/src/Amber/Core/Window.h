@@ -2,7 +2,7 @@
 
 #include "precHeaders.h"
 
-#include "Amber/Core.h"
+#include "Amber/Core/Core.h"
 #include "Amber/Events/Event.h"
 
 namespace Amber {

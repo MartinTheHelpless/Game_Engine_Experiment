@@ -1,6 +1,6 @@
 #pragma once
 
-#include "OrthographicCamera.h"
+#include "Amber/Renderer/OrthographicCamera.h"
 #include "Amber/Core/Timestep.h"
 #include "Amber/Events/ApplicationEvent.h"
 #include "Amber/Events/MouseEvent.h" 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Amber/Input.h"
+#include "Amber/Core/Input.h"
 
 namespace Amber 
 {

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "precHeaders.h"
-#include "Amber/Core.h"
-#include "Amber//Layer.h"
+#include "Amber/Core/Core.h"
+#include "Amber/Core/Layer.h"
 
 
 

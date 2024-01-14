@@ -2,7 +2,7 @@
 
 #include "precHeaders.h"
 
-#include "Amber/Core.h"
+#include "Amber/Core/Core.h"
 
 namespace Amber {
 	

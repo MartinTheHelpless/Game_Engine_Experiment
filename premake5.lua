@@ -64,8 +64,7 @@ project "Amber"
 	filter "system:windows"
 		systemversion "latest"
 
-		defines { 
-		"AM_PLATFORM_WINDOWS", 
+		defines {  
 		"AM_BUILD_DLL",
 		"GLFW_INCLUDE_NONE"
 		}
@@ -114,9 +113,7 @@ project "Sandbox"
 
 	filter "system:windows" 
 		systemversion "latest"
-
-		defines {  "AM_PLATFORM_WINDOWS"  } 
-
+		 
 	filter "configurations:Debug"
 		defines "AM_DEBUG"
 		runtime "Debug"
