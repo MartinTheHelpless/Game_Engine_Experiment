@@ -7,8 +7,7 @@
 #include <glad/glad.h>
 
 namespace Amber
-{
-	
+{ 
 	Ref<Shader> Shader::Create(const std::string& filepath)
 	{
 		auto lastSlash = filepath.find_last_of("/\\");
