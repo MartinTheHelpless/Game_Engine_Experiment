@@ -82,7 +82,9 @@ public:
 
 	void OnUpdate(Amber::Timestep ts) override
 	{  
-   
+		
+		AM_PROFILE_FUNCTION();
+
 		m_CameraController.OnUpdate(ts);
 
 		Amber::RenderCommand::SetClearColor({ 0.12f, 0.12f, 0.12f, 1 });

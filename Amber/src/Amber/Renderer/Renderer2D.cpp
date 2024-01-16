@@ -54,11 +54,15 @@ namespace Amber
 
 	void Renderer2D::Shutdown()
 	{
+		AM_PROFILE_FUNCTION();
+
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
+		AM_PROFILE_FUNCTION();
+
 		s_Data->TextureShader->Bind();
 		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix()); 
 
@@ -76,6 +80,8 @@ namespace Amber
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color, const float& scale)
 	{
+		AM_PROFILE_FUNCTION();
+
 		s_Data->WhiteTexture->Bind();
 
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
@@ -95,7 +101,9 @@ namespace Amber
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, const float& scale, const glm::vec4& color)
-	{ 
+	{
+		AM_PROFILE_FUNCTION();
+
 
 		texture->Bind();
 

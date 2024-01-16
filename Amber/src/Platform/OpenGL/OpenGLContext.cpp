@@ -15,6 +15,8 @@ namespace Amber {
 
 	void OpenGLContext::Init()
 	{
+		AM_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		AM_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -39,6 +41,8 @@ namespace Amber {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		AM_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 

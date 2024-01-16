@@ -17,7 +17,9 @@ namespace Amber {
 	ImGuiLayer::~ImGuiLayer() {}
 	 
 	void ImGuiLayer::OnAttach()
-	{ 
+	{
+		AM_PROFILE_FUNCTION();
+
 
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -48,6 +50,8 @@ namespace Amber {
 
 	void ImGuiLayer::OnDetach()
 	{
+		AM_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -55,6 +59,8 @@ namespace Amber {
 
 	void ImGuiLayer::Begin()
 	{
+		AM_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -62,6 +68,8 @@ namespace Amber {
 
 	void ImGuiLayer::End()
 	{
+		AM_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		
 		Application& app = Application::Get();

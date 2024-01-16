@@ -39,11 +39,15 @@ namespace Amber
 	 
 	void OpenGLShader::Bind() const
 	{
+		AM_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
+		AM_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
@@ -127,6 +131,8 @@ namespace Amber
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		AM_PROFILE_FUNCTION();
+
 		std::string result;
 
 		std::ifstream in(filepath, std::ios::in | std::ios::binary);
@@ -149,6 +155,8 @@ namespace Amber
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		AM_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		const char* typeToken = "#type";
@@ -174,7 +182,9 @@ namespace Amber
 	}
 
 	void OpenGLShader::Compile(std::unordered_map<GLenum, std::string>& shaderSources)
-	{  
+	{
+		AM_PROFILE_FUNCTION();
+
 		GLuint program = glCreateProgram(); 
 		AM_CORE_ASSERT(shaderSources.size() <= 4, "Too many shaders in one file");
 

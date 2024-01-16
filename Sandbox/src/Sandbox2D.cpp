@@ -21,27 +21,22 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Amber::Timestep ts)
 {
-	AM_PROFILE_FUNCTION("Sandbox2D::OnUpdate");
+	AM_PROFILE_FUNCTION(); 
 
-	{
-		AM_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
-
-	{
-		AM_PROFILE_SCOPE("Renderer::Clear&Color");
-		Amber::RenderCommand::SetClearColor({ 0.12f, 0.12f, 0.12f, 1 });
-		Amber::RenderCommand::Clear();
-	}
+	m_CameraController.OnUpdate(ts);
+	 
+	Amber::RenderCommand::SetClearColor({ 0.12f, 0.12f, 0.12f, 1 });
+	Amber::RenderCommand::Clear(); 
 	 
 	Amber::Renderer2D::BeginScene(m_CameraController.GetCamera());
-
+	 
 	{
-		AM_PROFILE_SCOPE("Render::DrawingQuads");
+		AM_PROFILE_SCOPE("Render Draw");
 		Amber::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, m_SquareColor);
 		Amber::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 		Amber::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture, 6.0f, m_BackgroundColor);
 	}
+	 
 	Amber::Renderer2D::EndScene(); 
 }
 

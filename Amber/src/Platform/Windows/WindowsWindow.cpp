@@ -23,16 +23,22 @@ namespace Amber {
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		AM_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		AM_PROFILE_FUNCTION();
+
 		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		AM_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -155,7 +161,10 @@ namespace Amber {
 
 	void WindowsWindow::OnUpdate()
 	{
-		glfwPollEvents();
+		AM_PROFILE_FUNCTION();
+		 
+		glfwPollEvents();  
+
 		m_Context->SwapBuffers();
 	}
 
