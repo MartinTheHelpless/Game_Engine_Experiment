@@ -157,6 +157,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Amber\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Amber\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Amber\Core\Application.cpp">

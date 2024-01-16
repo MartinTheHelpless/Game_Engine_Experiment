@@ -16,6 +16,8 @@
 
 #include "Amber/Core/Log.h"
 
+#include "Amber/Debug/Instrumentor.h"
+
 #ifdef AM_PLATFORM_WINDOWS
 #include "Windows.h"
 #endif

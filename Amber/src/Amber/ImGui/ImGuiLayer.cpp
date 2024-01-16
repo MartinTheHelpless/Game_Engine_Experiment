@@ -15,12 +15,6 @@ namespace Amber {
 	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") { }
 
 	ImGuiLayer::~ImGuiLayer() {}
-
-	void ImGuiLayer::OnImGuiRender() 
-	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
-	}	
 	 
 	void ImGuiLayer::OnAttach()
 	{ 

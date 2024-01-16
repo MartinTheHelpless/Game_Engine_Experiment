@@ -4,8 +4,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
- 
-
+  
 Sandbox2D::Sandbox2D() : Layer("Sandbox2D"), m_CameraController((float)(1280.0f / 720.0f))
 {
 
@@ -22,26 +21,39 @@ void Sandbox2D::OnDetach()
 
 void Sandbox2D::OnUpdate(Amber::Timestep ts)
 {
+	AM_PROFILE_FUNCTION("Sandbox2D::OnUpdate");
 
-	m_CameraController.OnUpdate(ts);
+	{
+		AM_PROFILE_SCOPE("CameraController::OnUpdate");
+		m_CameraController.OnUpdate(ts);
+	}
 
-	Amber::RenderCommand::SetClearColor({ 0.12f, 0.12f, 0.12f, 1});
-	Amber::RenderCommand::Clear();
-
+	{
+		AM_PROFILE_SCOPE("Renderer::Clear&Color");
+		Amber::RenderCommand::SetClearColor({ 0.12f, 0.12f, 0.12f, 1 });
+		Amber::RenderCommand::Clear();
+	}
+	 
 	Amber::Renderer2D::BeginScene(m_CameraController.GetCamera());
-	Amber::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, m_SquareColor);
-	Amber::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, {0.8f, 0.2f, 0.3f, 1.0f});
-	Amber::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture, 6.0f, m_SquareColor);
-	Amber::Renderer2D::EndScene();
 
+	{
+		AM_PROFILE_SCOPE("Render::DrawingQuads");
+		Amber::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, m_SquareColor);
+		Amber::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+		Amber::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture, 6.0f, m_BackgroundColor);
+	}
+	Amber::Renderer2D::EndScene(); 
 }
 
 void Sandbox2D::OnImGuiRender()
 {
 	ImGui::Begin("Color Settings");
+	ImGui::ColorEdit4("Background Color", glm::value_ptr(m_BackgroundColor));
 
-	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+	ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor)); 
 
+	m_ProfileResults.clear();
+	
 	ImGui::End();
 }
 
