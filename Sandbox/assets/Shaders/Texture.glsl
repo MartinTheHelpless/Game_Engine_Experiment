@@ -19,10 +19,14 @@ void main()
 #version 330 core
 
 layout(location = 0) out vec4 color;
+
 in vec2 v_TexCoord;
+
+uniform vec2 u_Scale;
+uniform vec4 u_Color;
 uniform sampler2D u_Texture;
 
 void main()
-{
-	color = texture(u_Texture, v_TexCoord * 8.0f) * vec4(0.4, 0.25, 0.6, 1.0);
+{ 
+	color = texture(u_Texture, v_TexCoord * u_Scale ) * u_Color;
 }
