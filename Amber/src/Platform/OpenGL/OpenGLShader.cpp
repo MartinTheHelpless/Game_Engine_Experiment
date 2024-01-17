@@ -56,7 +56,7 @@ namespace Amber
 		UploadUniformInt(name, value); 
 	}
 
-	void OpenGLShader::SetFloat(const std::string& name, const float& value)
+	void OpenGLShader::SetFloat(const std::string& name, float value)
 	{
 		UploadUniformFloat(name, value);
 	}
